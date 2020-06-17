@@ -1,0 +1,39 @@
+<section class="app-json-viewer" style=" overflow-y:scroll; overflow-x:scroll">  
+  <section *ngFor="let segment of segments" [ngClass]="['segment', 'segment-type-' + segment.type]">
+
+       <section (click)="toggle(segment)" [ngClass]="{'segment-main': true, 
+       'expandable': isExpandable(segment), 
+       'expanded': segment.expanded }">
+                   
+         <span *ngIf="isExpandable(segment)" class="toggler">
+            <span *ngIf = !segment.expanded>+</span>
+            <span *ngIf = segment.expanded>-</span>
+         </span> 
+
+         <span class="segment-key">
+           {{ segment.key }}
+         </span>        
+
+         <span class="segment-separator">
+           : 
+         </span>    
+
+         <span *ngIf="!segment.expanded || !isExpandable(segment)" 
+          class="segment-value">
+           {{ segment.description }}
+         </span>
+
+       </section>  
+
+       <section *ngIf="segment.expanded && isExpandable(segment)" class="children"> 
+
+         <app-json-viewer [json]="segment.value" [expanded]="expanded"></app-json-viewer>
+         
+       </section>   
+
+     </section>   
+</section>  
+
+                
+
+

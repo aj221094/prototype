@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-1">
+    <select id="Api" name="Api" #api (change) = "display($event)">
+      <option disabled value = "select">--select API--</option>
+      <option value="executionApi">Execution API</option>
+      <option value="googleApi">Google API</option>
+      <option value="restApi">Rest API</option>
+    </select>
+  </div>
+
+  <div class="offset-md-1 col-md-1">
+    <select id="devicetype" name="deviceType">
+      <option disabled>--select device--</option>
+      <option value="mobile">Mobile</option>
+      <option value="laptop">Laptop</option>
+      <option value="tablet">Tablet</option>
+    </select>
+  </div>
+</div>
+<br/>
+
+<div *ngIf = "state">
+  <app-data-display [apiName] = "api.value"></app-data-display>
+</div>
+
+
