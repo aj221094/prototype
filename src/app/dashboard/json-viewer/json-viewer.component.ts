@@ -21,19 +21,24 @@ export class JsonViewerComponent  {
   expanded : boolean;
   segments :Segment[];
 
+  count:number=0;
 
   ngOnChanges(changes : SimpleChanges){
-    const json : SimpleChange = changes.json;
-    this.json = json.currentValue;
-    if(JSON.stringify(json.previousValue) != JSON.stringify(json.currentValue)){
-      this.segments = [];
+    const json = changes.json;
+    const expanded = changes.expanded;
+    if(json && expanded){
+      this.json = json.currentValue;
+      this.expanded = expanded.currentValue;
+      this.json = changes.json.currentValue;
+      this.expanded = changes.expanded.currentValue;
     }
-
-    if (typeof this.json === 'object') {
-      Object.keys(this.json).forEach(function (key) {
-          this.segments.push(this.parseKeyValue(key, this.json[key]));
-      },this);
-    }
+    this.segments = [];
+  
+      if (typeof this.json === 'object') {
+        Object.keys(this.json).forEach(function (key) {
+            this.segments.push(this.parseKeyValue(key, this.json[key]));
+        },this);
+      }
   }
 
 

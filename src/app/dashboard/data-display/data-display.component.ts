@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { ReadFileService } from '../read-file.service';
-import { JsonViewerComponent } from '../json-viewer/json-viewer.component'
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class DataDisplayComponent implements OnInit {
 
   requestData:any;
   responseData:any;
+
   constructor(private rs:ReadFileService, ) { }
 
   ngOnInit(){
@@ -29,11 +30,12 @@ export class DataDisplayComponent implements OnInit {
 
   // to fetch data from files
   showData():void {
+    
     var requestFileUrl= './assets/requestFiles/' + this.apiName +'.json';
-    this.requestData = this.rs.readRequest(requestFileUrl).subscribe(
+    this.rs.readRequest(requestFileUrl).subscribe(
       (data)=>{ 
         try{
-          this.requestData=JSON.parse(data)
+          this.requestData = JSON.parse(data)
         }
         catch(e){console.log("data in file not of type json")}
       },
@@ -41,10 +43,10 @@ export class DataDisplayComponent implements OnInit {
       );
 
       var responseFileUrl = './assets/responseFiles/' + this.apiName + '.json';
-      this.responseData = this.rs.readRequest(responseFileUrl).subscribe(
+      this.rs.readRequest(responseFileUrl).subscribe(
         (data)=>{ 
           try{
-            this.responseData=JSON.parse(data)
+            this.responseData = JSON.parse(data)
           }
           catch(e){console.log("data in file not of type json")}
         },

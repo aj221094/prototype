@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataDisplayComponent } from './dashboard/data-display/data-display.component';
-
 import { JsonViewerComponent } from './dashboard/json-viewer/json-viewer.component';
 
 @NgModule({
@@ -14,13 +13,11 @@ import { JsonViewerComponent } from './dashboard/json-viewer/json-viewer.compone
     DashboardComponent,
     DataDisplayComponent,
     JsonViewerComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

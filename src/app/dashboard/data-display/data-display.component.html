@@ -1,18 +1,22 @@
-<div class="row" style="height:500px ">
+<div class="row col-sm-12" style="height:500px ">
+    <div class="col-sm-4 ">
+        <p class=" w-75 p-3  d-inline-block " style="border: solid; float:left;word-wrap: break-word; overflow-y: auto;height:500px;margin:10px">
+            <app-json-viewer [json]="requestData" [expanded]="false"></app-json-viewer> 
+        </p>
+        <button class ="btn btn-info" style="float:left;margin-left:10px">Download</button> 
+    </div>
 
-<p class=" w-25 p-3 h-100 d-inline-block " style="border: solid; float:left; margin-right:200px;">
-<app-json-viewer [json]="requestData" [expanded]="false"></app-json-viewer>
-</p>
+    <div class="col-sm-3" style="margin:10px">
+        <button class ="btn btn-info" style="height:40px;">click me</button>
+        <b class="text-danger">>></b>
+    </div>
 
-<button class ="btn btn-info" style="height:7%">click me</button><b class="text-danger">>></b>
-
-<p class=" w-25 p-3 h-100 d-inline-block " style="border: solid; float: left; margin-left:200px;">
-<app-json-viewer [json]="responseData" [expanded]="false"></app-json-viewer>
-</p>
-
-
-<!-- buttons for downloads -->
-<div class="row">
-    <button class ="btn btn-info" style="float:left">Download</button>
-    <button class ="btn btn-info" style="float:left; margin-left: 600px">Download</button>
+<div class="col-sm-4 ">
+    <p class=" w-75 p-3 d-inline-block " style="border: solid; float: left;word-wrap: break-word; overflow-y: auto;height:500px;margin:10px">
+        <app-json-viewer [json]="responseData" [expanded]="false"></app-json-viewer>
+    </p>
+    <button class ="btn btn-info" style="float:left;margin-left:10px">Download</button>
+    </div>
 </div>
+
+
